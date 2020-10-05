@@ -16,13 +16,13 @@ const HomePage = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  useEffect(() => {
-    dispatch(blogActions.blogsRequest(pageNum));
-  }, [dispatch, pageNum]);
+	useEffect(() => {
+		dispatch(blogActions.blogsRequest(pageNum));
+	}, [dispatch, pageNum]);
 
-  const handleClickOnBlog = (id) => {
-    history.push(`/blogs/${id}`);
-  };
+	const handleClickOnBlog = (id) => {
+		history.push(`/blogs/${id}`);
+	};
 
   return (
     <Container>
