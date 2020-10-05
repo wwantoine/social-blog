@@ -15,6 +15,9 @@ const blogReducer = (state = initialState, action) => {
     case types.SEND_REACTION_REQUEST:
     case types.CREATE_REVIEW_REQUEST:
     case types.GET_SINGLE_BLOG_REQUEST:
+    case types.CREATE_BLOG_REQUEST:
+    case types.UPDATE_BLOG_REQUEST:
+    case types.DELETE_BLOG_REQUEST:
       return { ...state, loading: true };
 
     case types.GET_BLOGS_SUCCESS:
@@ -27,6 +30,10 @@ const blogReducer = (state = initialState, action) => {
 
     case types.GET_BLOGS_FAILURE:
     case types.GET_SINGLE_BLOG_REQUEST_FAILURE:
+    case types.CREATE_BLOG_SUCCESS:
+    case types.CREATE_BLOG_FAILURE:
+    case types.UPDATE_BLOG_FAILURE:
+    case types.DELETE_BLOG_FAILURE:
       return { ...state, loading: false };
 
     case types.GET_SINGLE_BLOG_REQUEST_SUCCESS:
@@ -69,6 +76,19 @@ const blogReducer = (state = initialState, action) => {
           ],
         },
         submitLoading: false,
+      };
+
+    case types.UPDATE_BLOG_SUCCESS:
+      return {
+        ...state,
+        selectedBlog: payload,
+        loading: false,
+      };
+    case types.DELETE_BLOG_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        selectedBlog: {},
       };
 
     default:
