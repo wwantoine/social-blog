@@ -6,9 +6,9 @@ import NotFoundPage from "components/NotFoundPage";
 import AddEditBlogPage from "containers/AddEditBlogPage";
 import BlogDetailPage from "containers/BlogDetailPage";
 import HomePage from "containers/HomePage";
-// import LoginPage from "containers/LoginPage";
+import LoginPage from "containers/LoginPage";
 import PublicNavbar from "containers/PublicNavbar";
-// import RegisterPage from "containers/RegisterPage";
+import RegisterPage from "containers/RegisterPage";
 import PrivateRoute from "containers/Routes/PrivateRoute";
 
 const PublicLayout = () => {
@@ -19,8 +19,8 @@ const PublicLayout = () => {
         <AlertMsg />
         <Switch>
           <Route exact path="/" component={HomePage} />
-          {/* <Route exact path="/login" component={LoginPage} /> */}
-          {/* <Route exact path="/register" component={RegisterPage} /> */}
+          <Route exact path="/login" component={LoginPage} />
+          <Route exact path="/register" component={RegisterPage} />
           <Route exact path="/blogs/:id" component={BlogDetailPage} />
           <PrivateRoute exact path="/blog/add" component={AddEditBlogPage} />
           <PrivateRoute
