@@ -8,6 +8,7 @@ import Markdown from "react-markdown";
 import { blogActions } from "redux/actions";
 import ReviewList from "components/ReviewList";
 import ReviewForm from "components/ReviewForm";
+import ReactionList from "components/ReactionList";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const BlogDetailPage = () => {
@@ -28,6 +29,10 @@ const BlogDetailPage = () => {
     e.preventDefault();
     dispatch(blogActions.createReview(params.id, reviewText));
     setReviewText("");
+  };
+
+  const handleEmojiClick = (targetType, targetId, emoji) => {
+    dispatch(blogActions.sendEmojiReaction(targetType, targetId, emoji));
   };
 
   useEffect(() => {
@@ -73,7 +78,20 @@ const BlogDetailPage = () => {
               <hr />
               <Markdown source={blog.content} />
               <hr />
-              <ReviewList reviews={blog.reviews} />
+              <ReactionList
+                reactionsData={blog.reactions}
+                targetType="Blog"
+                targetId={blog._id}
+                handleEmojiClick={handleEmojiClick}
+                loading={submitLoading}
+                size="lg"
+              />
+              <hr />
+              <ReviewList
+                reviews={blog.reviews}
+                handleEmojiClick={handleEmojiClick}
+                loading={submitLoading}
+              />
             </div>
           )}
 
