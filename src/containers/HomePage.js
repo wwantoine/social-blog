@@ -1,9 +1,9 @@
 import BlogCard from "components/BlogCard";
 import PaginationBar from "components/PaginationBar";
 import React, { useEffect, useState } from "react";
-import { CardColumns, Container, Jumbotron } from "react-bootstrap";
+import { CardColumns, Container, Jumbotron, Button } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
 import { blogActions } from "redux/actions/blog.actions";
 
@@ -11,6 +11,7 @@ const HomePage = () => {
   const [pageNum, setPageNum] = useState(1);
   const loading = useSelector((state) => state.blog.loading);
   const blogs = useSelector((state) => state.blog.blogs);
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const totalPageNum = useSelector((state) => state.blog.totalPageNum);
   const dispatch = useDispatch();
   const history = useHistory();
@@ -28,6 +29,11 @@ const HomePage = () => {
       <Jumbotron className="text-center">
         <h1>Social Blog</h1>
         <p>Write about your amazing experiences.</p>
+        {isAuthenticated && (
+          <Link to="/blog/add">
+            <Button variant="primary">Write now</Button>
+          </Link>
+        )}
       </Jumbotron>
       <PaginationBar
         pageNum={pageNum}
