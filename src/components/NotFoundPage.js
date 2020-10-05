@@ -5,7 +5,7 @@ const NotFoundPage = () => {
   return (
     <Container>
       <Row>
-        <Col>
+        <Col md={{ span: 6, offset: 3 }}>
           <h1>404 Not Found</h1>
           <p>Sorry, the page you're looking for does not exist.</p>
         </Col>
