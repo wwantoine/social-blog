@@ -40,7 +40,6 @@ const blogReducer = (state = initialState, action) => {
 
     case types.CREATE_REVIEW_REQUEST:
     case types.SEND_REACTION_REQUEST:
-    case types.CREATE_REVIEW_REQUEST:
       return { ...state, submitLoading: true };
 
     case types.CREATE_REVIEW_SUCCESS:
@@ -54,7 +53,6 @@ const blogReducer = (state = initialState, action) => {
       };
     case types.CREATE_REVIEW_FAILURE:
     case types.SEND_REACTION_FAILURE:
-    case types.CREATE_REVIEW_FAILURE:
       return { ...state, submitLoading: false };
 
     case types.BLOG_REACTION_SUCCESS:
